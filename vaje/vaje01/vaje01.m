@@ -1,0 +1,1 @@
+ndgrid(linspace(0, 10), linspace(0, 5))

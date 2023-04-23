@@ -1,4 +1,4 @@
-function risi(zac,L,M)
+function risi_diskretno(zac,L,M)
 % RISI_VER_UV narise sliko veriznice
 %
 % Vhodni parametri:

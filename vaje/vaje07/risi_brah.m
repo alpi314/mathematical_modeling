@@ -19,6 +19,12 @@ function risi_brah(T1,T2,st_tock);
     time = @(t) (k * t) / sqrt(2*g);
     time_until_finish = time(theta)
     
+    % razlaga:
+    % formula za čas je da integriramo po x (med T1, T2) funkcijo
+    % sqrt(1 + y'^2) / sqrt(2*g*(-y))
+    % ker imamo premico je y' = koeficient premice
+    % ker je ena točka T1 po predpostavki (0, 0) je n od premice enak 0, k
+    % pa je enak T2(2) / T2(1)
     coeff = T2(2) / T2(1);
     integral_function = @(x) sqrt((1 + coeff.^2) ./ (2 .* g .* (-coeff .* x)));
     time_on_line = integral(integral_function, 0, T2(1))

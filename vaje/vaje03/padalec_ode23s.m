@@ -32,8 +32,7 @@ function d_Y = differencial(t, Y, parametri, naloga, start_condtion)
             A = aproksimacija();
             ro = @(y)  A(1) + A(2)*((y-40000)/40000).^(2) + A(3)*((y-40000)/40000).^(4);
      
-            g = @(y) 9.81*((6371*1000)/(6371*1000+y))^2 - pospesek_vrvices(y, m);
-            
+            g = @(y) 9.81*((6371*1000)/(6371*1000+y))^2 - pospesek_vrvices(y, m);   
     end
     
     dd_y = @(t, Y) -g(Y(1))-(1/2*ro(Y(1))*c*S)/m*abs(Y(2)).*Y(2);

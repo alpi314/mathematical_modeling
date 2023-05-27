@@ -21,10 +21,16 @@ time_on_line = integral(integral_function, 0, T3_shifted(1));
 horiz_distance = T2(1) - T3(1);
 v_at_T3 = sqrt(2*g*-T3_shifted(2));
 
-%k32 = line_coeff(T3, T2);
-%T2_shifted_by_3 = T2 - T3;
-%integral_function_from_T3 = @(x) sqrt((1 + k32.^2)) ./ (sqrt(2 .* g .* (-k32 .* x)) - v_at_T3);
-%integral(integral_function, 0, T2_shifted_by_3(1))
+% SOLUTION BY SEPERATE INTEGRAL (using v0 =/= 0)
+% k32 = line_coeff(T3, T2);
+% T2_shifted_by_3 = T2 - T3;
+% integral_function_from_T3 = @(x) sqrt((1 + k32.^2)) ./ (sqrt(2 .* g .* (-k32 .* x)) - v_at_T3);
+% integral(integral_function, 0, T2_shifted_by_3(1))
+
+% SOLUTION IN ONE PART WOULD BE LIKE
+% k = @(x) k13 if x < T3(1) else k23
+% integral_function = @(x) sqrt((1 + k(x).^2)) ./ sqrt(2 .* g .* (-k(x) .* x));
+% integral(integral_function, 0, T2_shifted_by_3(1))
 
 total_time = time_on_line + horiz_distance / v_at_T3
 

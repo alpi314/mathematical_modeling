@@ -1,4 +1,4 @@
-function zrcali_bezier(b)
+function b_mirrored = zrcali_bezier(b, risi)
 % Metoda prezrcali Bezierjevo krivuljo, podano s kontrolnimi
 % tockami b, preko premice p, dolocene z zacetno in koncno kontrolno tocko.
 % Izrise tudi zacetno in prezrcaljeno krivuljo ter oba kontrolna poligona.
@@ -12,7 +12,9 @@ function zrcali_bezier(b)
     middle_points_y = middle_points_x .* k + n;
     b_mirrored = 2 .* [middle_points_x middle_points_y] - b;
 
-    plotBezier(b);
-    plotBezier(b_mirrored);
+    if risi
+        plotBezier(b);
+        plotBezier(b_mirrored);
+    end
 
 end

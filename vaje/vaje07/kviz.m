@@ -51,24 +51,21 @@ norm_1_5 = norm(T_1_5, 2)
 
 % naloga 5
 x = (1/2) * k^2 * (theta - sin(theta));
+dx = (1/2) * k^2 * (1 - cos(theta));
 y = -(1/2) * k^2 * (1 - cos(theta));
+dy = (1/2) * k^2 * sin(theta);
 
 v_end = sqrt(2*g*-y);
+v_direction = [dx; dy];
+v_end_directional = (v_direction / norm(v_direction)) .* v_end;
+
 x = x + T1(1);
 y = y + T1(2);
 
-% PREDPOSTAVKA: kroglica se ne premika horizontalno
-v_end_horiz = -cos(theta) * v_end
-v_end_verti = -sin(theta) * v_end
+height = @(t) (-g/2) * t^2 - v_end_directional(2) * t + y;
+time_to_ground = fzero(height, 1);
 
-% REŠIMO: s = (1/2) * g * t^2 + t * v
-height = @(t) y + v_end_verti * t + (-g) * t^2;
-t_to_ground = fzero(height, 1)
-
-% PREDPOSTAVKA: kroglica se premika horizontalno
-% t_to_ground = sqrt(2*y / g);
-
-x_end = x + v_end_horiz * t_to_ground
+x = x + time_to_ground * v_end_directional(1)
 
 function v = speed_at(g, k, t)
     y = -(1/2) * k^2 * (1 - cos(t));

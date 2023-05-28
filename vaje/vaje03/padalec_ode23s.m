@@ -15,6 +15,7 @@ function d_Y = differencial(t, Y, parametri, naloga, start_condtion)
     S = parametri(3);
     r = parametri(4);
     g0 = parametri(5);
+    air_speed = parametri(6);
     
     
     switch naloga
@@ -35,7 +36,8 @@ function d_Y = differencial(t, Y, parametri, naloga, start_condtion)
             g = @(y) 9.81*((6371*1000)/(6371*1000+y))^2 - pospesek_vrvices(y, m);   
     end
     
-    dd_y = @(t, Y) -g(Y(1))-(1/2*ro(Y(1))*c*S)/m*abs(Y(2)).*Y(2);
+    vertical_speed = min(Y(2) - air_speed, 0);
+    dd_y = @(t, Y) -g(Y(1))-(1/2*ro(Y(1))*c*S)/m*abs(vertical_speed).*vertical_speed;
     d_Y = [Y(2); dd_y(t, Y)];
 end
 
@@ -47,6 +49,23 @@ function f = pospesek_vrvices(y, m)
         f = 0;
     else
         f = k*(rope_length-y)/m;
+    end
+end
+
+function v = upor_medija(y)
+    v = 1.225; % zrak
+    if y < 0
+        v = 997; % voda
+    end
+end
+
+function f = pospesek_upora_vode(y, m)
+    base_force = 800;
+    
+    if y >= 0
+        f = 0;
+    else
+        f = base_force / m;
     end
 end
 

@@ -7,7 +7,7 @@ n = 10000; % delitve intervala
 r = 6371000; % radij zemlje
 g0 = 9.81; % gravitacijski pospesek 0
 
-parametri = [m,c,S,r,g0];
+parametri = [m,c,S,r,g0,0];
 start_condtion = [start_height;0];
 
 % naloga 1

@@ -1,8 +1,6 @@
 b = [0 1 2 3 4 2 1.5 1; 0 2 -1 1 3 2 1 0];
 o = optimset('TolFun',1e-16, 'Display','off');
 
-plotBezier(b);
-
 % naloga 1
 bk = b(:, :);
 
@@ -20,7 +18,24 @@ bk = rotiraj_bezier(bk, X(1), 0);
 naloga_1 = norm(v)
 
 % naloga 2
+cirteria_func = @(X) point_difference(b, X(1), X(2));
+[t1_t2] = fminsearch(cirteria_func, [0.2; 0.9], o);
 
+[b1, right] = sub_demo(b, t1_t2(1), 0);
+
+cirteria_func = @(X) point_difference(right, X(1), X(2));
+[t2_t3] = fminsearch(cirteria_func, [0; 0.9], o);
+
+[b2, b3] = sub_demo(right, t2_t3(2), 0);
+
+hold off
+plotBezier(b1);
+plotBezier(b2);
+plotBezier(b3);
+hold off
+
+[~, v, ~] = deCasteljau(b2, 1/3);
+naloga_2 = norm(v)
 
 % naloga 3
 naloga_3 = bezier_mass_center(b)
@@ -61,4 +76,11 @@ function t = t_value_for_length(b, v)
     length_until_t = @(t) integral(len_f, 0, t, 'ArrayValued', true);
     cirteria_func = @(t) length_until_t(t) - v;
     t = fsolve(cirteria_func, 1/2, o);
+end
+
+function d = point_difference(b, t1, t2)
+    [~, v1, ~] = deCasteljau(b, t1);
+    [~, v2, ~] = deCasteljau(b, t2);
+
+    d = norm(v1 - v2);
 end

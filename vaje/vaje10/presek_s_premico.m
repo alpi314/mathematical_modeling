@@ -7,6 +7,13 @@ function intersections = presek_s_premico(b,l,tol)
 % b je tabela 2x(n+1) kontrolnih tock po stolpcih
 % l = [P,s]
 % tol je natancnost, do katere isce presecisce.
+
+    % ideja je grajenje subdivizij krivulj (kot bisekcija)
+    % preveimo ce premica seka konveksno ogrinjaco podpornih tocko, če ne
+    % potem gotovo ne seka krivulje
+    % če pa seka potem delimo naprej dokler ne dossežemo dovolj majhnega
+    % lika
+
     if seka_mnogokotnik(l,b)
         if premer(b) < tol
             intersections = mean(b,2);
@@ -23,7 +30,7 @@ function intersections = presek_s_premico(b,l,tol)
     end
 end
 
-function max_distance=premer(coord_pairs)
+function max_distance = premer(coord_pairs)
     % Calculate the distance between each pair
     distances = sqrt(diff(coord_pairs(1,:)).^2 + diff(coord_pairs(2,:)).^2);
     

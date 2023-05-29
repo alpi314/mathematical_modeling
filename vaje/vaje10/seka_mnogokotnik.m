@@ -7,11 +7,17 @@ function seka = seka_mnogokotnik(l,P)
     point=l(:,1);
     normal=[direction(2);-direction(1)];
 
+    % ker mnozimo V1 = (P - point), V2 = normal v tem vrstnem redu
+    % si predstavljamo x-os vzdolž V1
+    % norme nas niti ne zanimajo važen je zgolj kot
+    % če bo kakšen predznak drugačen pomeni da bo vektor premice šel med
+    % dvema točkama (na sliki je to hitro intuitivno)
+
     scalar = (P - point)' * normal;
     scalar_sign = sign(scalar);
     if all(scalar_sign == scalar_sign(1))
-        seka=false;
+        seka=false; % vsi predznaki so enaki, torej ne seka
     else
-        seka=true;
+        seka=true; % obstaja par točk na drugi strani direciton vektorja
     end
 end

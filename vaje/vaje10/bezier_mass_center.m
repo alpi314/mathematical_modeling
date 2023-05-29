@@ -1,4 +1,7 @@
 function c = bezier_mass_center(b)
+    % mass_x = 1/L * integral x(t) * |dx(t)| dt
+    % mass_y = 1/L * integral y(t) * |dy(t)| dt
+
     l = bezier_length(b);
     magnitude = @(t) norm(bezier_derivative(b, t));
     X = @(t) x_value(b, t);

@@ -1,5 +1,6 @@
 function v = bezier_second_derivative(b, t)
-    binomial = @(n, i) factorial(n) / (factorial(i) * factorial(n - i));
+    % according to https://pages.mtu.edu/~shene/COURSES/cs3621/NOTES/spline/Bezier/bezier-der.html
+    binomial = @(n, i) factorial(n) / (factorial(i) * factorial(n - i)); % binomial coefficient
     B = @(n, i, t) binomial(n, i) * t.^i .* (1 - t).^(n - i);
 
     v = 0;

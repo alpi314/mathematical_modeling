@@ -37,8 +37,9 @@ v_at_T3 = sqrt(2*g*-T3_shifted(2));
 
 % SOLUTION IN ONE PART WOULD BE LIKE
 % k = @(x) k13 if x < T3(1) else k23
-% integral_function = @(x) sqrt((1 + k(x).^2)) ./ sqrt(2 .* g .* (-k(x) .* x));
-% integral(integral_function, 0, T2_shifted_by_3(1))
+k = @(x) k_at(k13, 0, x);
+integral_function = @(x) sqrt((1 + k(x).^2)) ./ sqrt(2 .* g .* (-k(x) .* x));
+integral(integral_function, 0, T2_shifted_by_3(1), "ArrayValued",true)
 
 total_time = time_on_line + horiz_distance / v_at_T3
 
@@ -74,6 +75,14 @@ height = @(t) (-g/2) * t^2 - v_end_directional(2) * t + y;
 time_to_ground = fzero(height, 1);
 
 x = x + time_to_ground * v_end_directional(1)
+
+function k = k_at(k1, k2, x)
+    k = k1;
+    if x > 3
+        k = k2
+    end
+
+end
 
 function v = speed_at(g, k, t)
     y = -(1/2) * k^2 * (1 - cos(t));

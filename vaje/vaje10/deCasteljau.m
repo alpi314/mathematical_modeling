@@ -12,7 +12,7 @@ function [left, middle, right] = deCasteljau(b_loc,t)
     b_n = times_t(:, 2:end) + times_one_minus_t(:, 1:end-1);
     
     if size(b_n, 2) == 1
-        middle = b_n';
+        middle = b_n;
     else
         [l, middle, r] = deCasteljau(b_n, t);
         left = [left l];

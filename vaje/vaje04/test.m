@@ -21,6 +21,7 @@ f = @(r) 1+0*r;
 R = 5;
 n = 10;
 [r,u] = povesi(f,R,n);
+risi(R, u)
 
 u
 

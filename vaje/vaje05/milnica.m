@@ -20,7 +20,7 @@ function milnica(a,n,f_spodaj,f_zgoraj,f_levo,f_desno,tol,metoda)
 
         U(i, 1) = f_levo(v);
         U(i, end) = f_desno(v);
-         U(1, i) = f_zgoraj(v);
+        U(1, i) = f_zgoraj(v);
         U(end, i) = f_spodaj(v);
     end
     

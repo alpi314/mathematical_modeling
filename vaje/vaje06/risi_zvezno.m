@@ -14,7 +14,7 @@ function [T_min,w] = risi_zvezno(obesisceL,obesisceD,L,tol)
 % w:                    funkcija ('function handle') w, ki opisuje visino veriznice v tocki x
 %
 
-    z = zvezna_veriznica(obesisceL, obesisceD, L, pi, tol)
+    z = zvezna_veriznica(obesisceL, obesisceD, L, pi, tol);
 
     v_plus_u = 2 * atanh((obesisceD(2) - obesisceL(2)) / L);
     v_minus_u = 2 * z;
@@ -36,10 +36,9 @@ function [T_min,w] = risi_zvezno(obesisceL,obesisceD,L,tol)
     hold on
 
     x0 = (obesisceD(1) - obesisceL(1)) / 2;
-    options = optimoptions('fsolve','Display','none');
-    x_min = fsolve(w, x0, options);
+    x_min = fminbnd(w, obesisceL(1), obesisceD(1));
     y_min = w(x_min);
-    T_min = [x_min; y_min]
+    T_min = [x_min; y_min];
        
     % draw min point
     scatter(x_min, y_min)

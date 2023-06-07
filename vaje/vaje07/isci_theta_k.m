@@ -1,4 +1,4 @@
-function [k,theta]=isci_theta_k(b,B);
+function [k,theta]=isci_theta_k(b,B)
 %ISCI_THETA doloci theta^*, resitev g(theta)=0
 %Predpostavka: T1(0,0), T2(b,B)
 %[k,theta]=ISCI_THETA_K(b,B);

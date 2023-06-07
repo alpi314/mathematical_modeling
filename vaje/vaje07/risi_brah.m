@@ -5,7 +5,7 @@ function risi_brah(T1,T2,st_tock);
 %st_tock je stevilo razdelitev intervala [x_1,x_2]
     T2 = T2 - T1;
 
-    [k, theta] = isci_theta_k(T2(1), T2(2))
+    [k, theta] = isci_theta_k(T2(1), T2(2));
 
     points = linspace(0, theta, st_tock);
 
@@ -17,7 +17,7 @@ function risi_brah(T1,T2,st_tock);
     
     g = 9.81;
     time = @(t) (k * t) / sqrt(2*g);
-    time_until_finish = time(theta)
+    time_until_finish = time(theta);
     
     % razlaga:
     % formula za čas je da integriramo po x (med T1, T2) funkcijo
@@ -27,5 +27,5 @@ function risi_brah(T1,T2,st_tock);
     % pa je enak T2(2) / T2(1)
     coeff = T2(2) / T2(1);
     integral_function = @(x) sqrt((1 + coeff.^2) ./ (2 .* g .* (-coeff .* x)));
-    time_on_line = integral(integral_function, 0, T2(1))
+    time_on_line = integral(integral_function, 0, T2(1));
 end

@@ -9,7 +9,7 @@ function [r,u]=povesi(f,R,n)
     r = linspace(0,R,n+1); % n+1 delilnih tock
     h = R/n;
     
-    rhs = h^2 * f(r(1:end-1)); % zadnjega ne vzamemo, saj je na robu opna pripeta
+    rhs = h.^2 * f(r(1:end-1)); % zadnjega ne vzamemo, saj je na robu opna pripeta
     
     a = 1 - h/2 * 1./r(2:n); % poddiagonala
     b = -2 * ones(n,1); % diagonala

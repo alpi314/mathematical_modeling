@@ -6,7 +6,7 @@ g = 9.81;
 % POMEMBNE FORMULE
 % v = sqrt(2 * g * - y(x))
 % t = integral (sqrt(1 + y'(x)^2) / v(x) dx
-% x = (k^2 / 2) * (theta - sin(theta) ... theta in [0, 1]
+% x = (k^2 / 2) * (theta - sin(theta)) ... theta in [0, 1]
 % dx = (1/2) * k^2 * (1 - cos(theta));
 % y = (-k^2 / 2) * (1 - cos(theta)) ... theta in [0, 1]
 % dy = (1/2) * k^2 * sin(theta);

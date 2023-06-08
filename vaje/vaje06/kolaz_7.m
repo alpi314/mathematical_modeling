@@ -54,10 +54,10 @@ C = (obesisceD(1) - obesisceL(1)) / (v - u);
 D = obesisceL(1) - u * C;
 %----------
 
-criteria_func = @(x) abs(line_length(C, D, TA(1), x) - length_to_T);
-[new_x, l] = fminbnd(criteria_func, 9, 10, o)
+criteria_func = @(x) abs(line_length(C, D, TA(1), x) - (length_to_T - 1));
+[new_x, l] = fminbnd(criteria_func, 6, 10, o)
 
-diff = new_x - AB_min_x
+diff = abs(new_x - AB_min_x)
 
 
 function y = zvezna_min_y(L, D, l)

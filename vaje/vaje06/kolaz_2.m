@@ -1,8 +1,22 @@
-b = 24;
+b = 96;
 l = 16;
+o = optimset('TolFun',1e-16, 'Display','off');
 
 T1 = [1; 0];
 T2 = [5; 4 + b/100];
+
+% ---------------------------
+z = zvezna_veriznica(T1, T2, l, pi, 1e-16);
+
+v_plus_u = 2 * atanh((T2(2) - T1(2)) / l);
+v_minus_u = 2 * z;
+
+v = (v_plus_u + v_minus_u) / 2;
+u = (v_plus_u - v_minus_u) / 2;
+
+C = (T2(1) - T1(1)) / (v - u);
+D = T1(1) - u * C;
+% ---------------------------
 
 hold on
 [Tmin, w] = risi_zvezno(T1, T2, l, 1e-8);
@@ -26,7 +40,7 @@ total_area = total_area + polyarea([x, flip(x)], [w_y, -w_y])
 
 % njamanjsi kot med premicami
 criteria_func = @(x) line_angle(T1, [x; w(x)], T2);
-S_x = fminbnd(criteria_func, T1(1), T2(1))
+S_x = fminbnd(criteria_func, T1(1), T2(1), o)
 
 % g func
 P1 = T1;
@@ -34,17 +48,20 @@ P2 = T2;
 P3 = [3; w(3)];
 
 %  w = @(x) lambda + C * cosh((x - D) / C);
-% dw_dx = @(x) sinh((x - D) / C);
+dw_dx = @(x) sinh((x - D) / C);
 
 line1_k = zvezna_derivative(w, P1(1));
+line1_k = dw_dx(P1(1));
 line1_n = P1(2) - line1_k * P1(1);
 line1 = @(x) line1_k * x + line1_n;
 
 line2_k = zvezna_derivative(w, P2(1));
+line2_k = dw_dx(P2(1));
 line2_n = P2(2) - line2_k * P2(1);
 line2 = @(x) line2_k * x + line2_n;
 
 line3_k = zvezna_derivative(w, P3(1));
+line3_k = dw_dx(P3(1));
 line3_n = P3(2) - line3_k * P3(1);
 line3 = @(x) line3_k * x + line3_n;
 

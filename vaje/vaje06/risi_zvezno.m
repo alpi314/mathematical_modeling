@@ -1,4 +1,4 @@
-function [T_min,w] = risi_zvezno(obesisceL,obesisceD,L,tol)
+function [T_min, w, C, D] = risi_zvezno(obesisceL,obesisceD,L,tol)
 % function [T_min,w] = zvVeriznica(obesisceL,obesisceD,L,tol)
 % Funkcija zvVeriznica doloci (in narise) zvezno veriznico w in poisce njeno najnizjo tocko.
 %

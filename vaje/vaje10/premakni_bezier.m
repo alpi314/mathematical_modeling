@@ -5,7 +5,6 @@ function b_shifted = premakni_bezier(b,s, risi)
     b_shifted = b + s; % samo premaknemo za s, s mora bit [x; y]
     
     if risi
-        plotBezier(b);
         plotBezier(b_shifted);
     end
 end

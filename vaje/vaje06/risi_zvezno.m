@@ -1,4 +1,4 @@
-function [T_min, w, C, D] = risi_zvezno(obesisceL,obesisceD,L,tol)
+function [T_min, w, C, D] = risi_zvezno(obesisceL,obesisceD,L,tol, risi)
 % function [T_min,w] = zvVeriznica(obesisceL,obesisceD,L,tol)
 % Funkcija zvVeriznica doloci (in narise) zvezno veriznico w in poisce njeno najnizjo tocko.
 %
@@ -28,12 +28,12 @@ function [T_min, w, C, D] = risi_zvezno(obesisceL,obesisceD,L,tol)
     lambda = obesisceL(2) - C * cosh((obesisceL(1) - D) / C);
 
     w = @(x) lambda + C * cosh((x - D) / C);
-
+    
+    
     % draw link
     x = linspace(obesisceL(1), obesisceD(1), 1000);
     y = w(x);
-    plot(x, y);
-    hold on
+
 
     x0 = (obesisceD(1) - obesisceL(1)) / 2;
     x_min = fminbnd(w, obesisceL(1), obesisceD(1));
@@ -41,5 +41,12 @@ function [T_min, w, C, D] = risi_zvezno(obesisceL,obesisceD,L,tol)
     T_min = [x_min; y_min];
        
     % draw min point
-    scatter(x_min, y_min)
+
+    if risi == 1
+        plot(x, y);
+        hold on
+        scatter(x_min, y_min)
+
+
+    end
 end

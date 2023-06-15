@@ -8,7 +8,6 @@ function b_rot = rotiraj_bezier(b,phi, shift, risi)
     b_rot = b_rot + shift;
     
     if risi == 1
-        plotBezier(b);
         plotBezier(b_rot);
     end
 end

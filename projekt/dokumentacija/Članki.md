@@ -1,0 +1,5 @@
+- [Bézier Interpolation - Omar Aflak | Towards Data Science](https://towardsdatascience.com/b%C3%A9zier-interpolation-8033e9a262c2)
+- [Bezierjeve Krivulje - Emil Žagar](bezierjeve_krivulje.pdf)
+- [Interpolacija podanih točk s kubičnim B-zlepkom - Matjaž Šubelj](http://www2.lecad.si/~matjaz/diploma/html/node21_mn.html)
+- [Interpolacija s parametričnimi polinomskimi krivuljami](interpolacija_s_parametričnimi_polinomskimi_krivuljami.pdf)
+- 

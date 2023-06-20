@@ -13,13 +13,24 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Postopek.md",
+                "file": "Članki.md",
                 "mode": "source",
                 "source": false
               }
             }
+          },
+          {
+            "id": "11fdfd9f9af22967",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "interpolacija_s_parametričnimi_polinomskimi_krivuljami.pdf"
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +96,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Postopek.md",
+                "file": "interpolacija_s_parametričnimi_polinomskimi_krivuljami.pdf",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +113,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Postopek.md",
+                "file": "interpolacija_s_parametričnimi_polinomskimi_krivuljami.pdf",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +136,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Postopek.md"
+                "file": "interpolacija_s_parametričnimi_polinomskimi_krivuljami.pdf"
               }
             }
           }
@@ -146,14 +157,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "cc9801b64dbabda9",
+  "active": "11fdfd9f9af22967",
   "lastOpenFiles": [
-    "Navodila.md",
     "Članki.md",
+    "Postopek.md",
+    "Navodila.md",
     "interpolacija_s_parametričnimi_polinomskimi_krivuljami.pdf",
     "interpolacija_s_parametričnimi_polinomskimi_krivuljami.md",
     "interpolacija_s_parametričnimi_polinomskimi_krivuljami 1.pdf",
-    "Postopek.md",
     "bezierjeve_krivulje.pdf",
     "Untitled.canvas"
   ]

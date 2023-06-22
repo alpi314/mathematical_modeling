@@ -1,4 +1,4 @@
-function draw_bezier(b, N)
+function draw_bezier(b, N, lineColor, vertexColor)
 % Metoda izrise Bezierjevo krivuljo in kontrolni poligon. Za izracun
 % tock na krivulji uporabimo deCasteljauov algoritem.
 % Stolpec matrike b je zaporedna kontrolna tocka Bezierjeve krivulje.
@@ -10,6 +10,16 @@ function draw_bezier(b, N)
         curve(:, i) = vrednost; 
     end
     
-    plot(b(1, :), b(2, :), "Color", "#074d01")
-    plot(curve(1, :), curve(2, :), "Color", "#10ab02")
+    if (nargin < 4)
+        vertexColor = [2, 105, 2];
+    end
+    if (nargin < 3) 
+        lineColor = [26, 186, 26];
+    end
+
+    lineColor = lineColor ./ 255;
+    vertexColor = vertexColor ./ 255;
+    
+    plot(b(1, :), b(2, :), "Color", vertexColor)
+    plot(curve(1, :), curve(2, :), "Color", lineColor)
 end

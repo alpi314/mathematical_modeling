@@ -1,6 +1,8 @@
-function s = interpoliraj(tocke, alfa)
+function s = interpoliraj(tocke, alfa, t_l, t_r)
     % tocke - (2, N) matrika tock, ki jih interpoliramo
     % alfa - parameter za izbor delilnih tock
+    % t_l - tangenta v levi tocki
+    % t_r - tangenta v desni tocki
 
     % izbor delilnih tock po alfa-parametrizaciji
     u = delilne_tocke(tocke, alfa); 
@@ -8,7 +10,11 @@ function s = interpoliraj(tocke, alfa)
     delta_p = diff(tocke, 1, 2);
     
     % postavitev in resitev sistema za oceno vektorjev v tockah
-    [A, B] = sistem_za_vektorje(delta_p, delta_u);
+    if nargin == 4
+        [A, B] = sistem_za_vektorje(delta_p, delta_u, t_l, t_r);
+    else
+        [A, B] = sistem_za_vektorje(delta_p, delta_u);
+    end
     v = A \ B;
 
     
@@ -37,7 +43,7 @@ function u = delilne_tocke(tocke, alfa)
     u = u ./ u(end); % normaliziramo točke na interval [0, 1]
 end
 
-function [A, B] = sistem_za_vektorje(delta_p, delta_u)
+function [A, B] = sistem_za_vektorje(delta_p, delta_u, t_l, t_r)
     % postavitev sistema za izracun vektorjev V (tangent) v tockah
     N = size(delta_p, 2) +1;
     A = zeros(N, N);
@@ -57,14 +63,24 @@ function [A, B] = sistem_za_vektorje(delta_p, delta_u)
         B(j, :) = (3 / (delta_u(j-1) + delta_u(j))) .* (delta_previous_P + delta_current_P);
     end
 
-    % dodamo enacbi za besselov zlepek za tocki v krajsicih
-    % Zacetni: v0 + v1 = (2 / delta0) * deltaP0
-    A(1, 1) = 1;
-    A(1, 2) = 1;
-    B(1, :) = (2 / delta_u(1)) .* delta_p(:, 1);
-    
-    % Koncni: vN + vN-1 = (2 / deltaN-1) * deltaPN-1
-    A(N, N-1) = 1;
-    A(N, N) = 1;
-    B(N, :) = (2 / delta_u(N-1)) .* delta_p(:, N-1);
+    if nargin == 4
+        % v0 = t_l
+        A(1, 1) = 1;
+        B(1, :) = t_l;
+
+        % vN = t_r
+        A(N, N) = 1;
+        B(N, :) = t_r;
+    else
+        % dodamo enacbi za besselov zlepek za tocki v krajsicih
+        % Zacetni: v0 + v1 = (2 / delta0) * deltaP0
+        A(1, 1) = 1;
+        A(1, 2) = 1;
+        B(1, :) = (2 / delta_u(1)) .* delta_p(:, 1);
+        
+        % Koncni: vN + vN-1 = (2 / deltaN-1) * deltaPN-1
+        A(N, N-1) = 1;
+        A(N, N) = 1;
+        B(N, :) = (2 / delta_u(N-1)) .* delta_p(:, N-1);
+    end
 end

@@ -1,7 +1,7 @@
 tocke = [0 1 2 3; 0 3 -1 1.5];
 alfa = 0.5;
-t_l = [1; -2];
-t_r = [-0.1; -0.4];
+t_l = [1; -2]; % tangenta v levem krajiscu
+t_r = [-0.1; -0.4]; % tangenta v desnem krajiscu
 
 % interpolacija po segmentih
 s = interpoliraj(tocke, alfa, t_l, t_r);

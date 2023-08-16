@@ -1,3 +1,5 @@
+% Primer animira spreminjanje vrednosti parametra alfa
+
 N = 25;
 tocke = [0 1 2 3 3 3.5; 0 3 0 0 3 1];
 alfa = linspace(0, 1, N);

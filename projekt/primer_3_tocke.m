@@ -1,7 +1,5 @@
-% OPOMBA
-% v literaturi imamo tocke 0...N pri nas pa 1...N (N-ja nista enaka!)
-% v literaturi je tock N + 1 pri nas pa jih je kar N.
-% hkrati vpoštevamo tudi indeksiranje v matlabu, ki se zacne pri 1
+% Manjsi primer na fiksnem stevilu tock, kjer si lazje predstavljamo
+% algoritem zapisan v interpoliraj.m
 
 A = [0; 2];
 B = [1; 4];

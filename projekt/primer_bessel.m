@@ -1,5 +1,5 @@
 tocke = [0 1 2 3 3 3.5; 0 3 0 0 3 1];
-alfa = 0.5;
+alfa = 0.5; % alfa = 0.5 ... Besselov zlepek
 
 % interpolacija po segmentih
 s = interpoliraj(tocke, alfa);

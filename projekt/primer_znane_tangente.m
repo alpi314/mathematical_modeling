@@ -15,4 +15,10 @@ N = size(tocke, 2);
 for segment_start = 1:3:3*(N-1)
     draw_bezier(s(:, segment_start:segment_start+3), 1000);
 end
+
+% izpisemo tangete
+t_l_1 = [t_l(2); -t_l(1)]
+t_l_1 / norm(t_l_1)
+t_l_2 = bezier_derivative(s, 0)
+t_l_2 / norm(t_l_2)
 hold off

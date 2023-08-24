@@ -10,7 +10,7 @@ tocke = [A B C];
 
 alfa = 0.5; % alfa je na [0, 1]
 
-% izbor delilnih tock po alfa-parametrizaciji
+% izbor delilnih tock po alfa-parametrizacij
 u = delilne_tocke(tocke, alfa); 
 delta_u = diff(u);
 delta_p = diff(tocke, 1, 2);
